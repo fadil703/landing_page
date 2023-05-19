@@ -25,13 +25,15 @@
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
-    
     <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    <!--add form izin kerma-->
+    
+    <!--end :: izin kerma-->
     <style>
         .dropbtn {
           background-color: #04AA6D;
@@ -73,6 +75,44 @@
         .dropdown:hover .dropdown-content {display: block;}
         
         .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+        /*accordion style */
+        /* Style the buttons that are used to open and close the accordion panel */
+        .accordion {
+            background-color: #eeeeee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .accordion:hover {
+            background-color: #cccccc;
+        }
+
+        /* Style the accordion panel. Note: hidden by default */
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+
+        .accordion:after {
+            content: '\002B'; /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: #777;
+            float: right;
+            margin-left: 5px;
+        }
+        
+        /* end accordion style */
+
     </style>
 </head>
 <!--end::Head-->
@@ -361,9 +401,26 @@
                             <div class="text-black-600 fw-bold fs-5">Yang banyak ditanyakan</div>
                         </div>
                         <!--end::Heading-->
-                        <div class="mb-13 text-left">
-                            
+                        <!--add faq-->
+                        <button class="accordion fw-bold" >Kerja sama apa saja yang perlu persetujuan?</button>
+                        <div class="panel">
+                            <p>Kerja sama yang perlu persetujuan dan perlu di laporkan adalah kerja 
+                                sama yang sifatnya degree atau kerja sama yang menghasilkan ijazah dan sertifikat.</p>
                         </div>
+
+                        <button class="accordion fw-bold">Saya punya masalah teknis, siapa yang bisa kami hubungi?</button>
+                        <div class="panel">
+                            <p>Terkait masalah teknis silakan hubungi Kontak yang ada pada section kontak di bawah halaman ini.</p>
+                        </div>
+
+                        <button class="accordion fw-bold">Dimana kita mendapatkan Usermanual aplikasi dan daftar dokumen u
+                            ntuk kelengkapan yang perlu disiapkan untuk mengajukan kerjasama?</button>
+                        <div class="panel">
+                            <p>Untuk informasi usermanual aplikasi dan kelengkapan yang perlu disiapkan 
+                                untuk akademik silakan buka halaman "ini" , dan untuk vokasi di halaman "ini" .</p>
+                        </div>
+
+                        <!--end faq-->
                     </div>
                     <!--end::Plans-->
                 </div>
@@ -570,6 +627,23 @@
     <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--end::Javascript-->
     <script>
+        /*add accordian js */
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+            panel.style.display = "none";
+            } else {
+            panel.style.display = "block";
+            }
+        });
+        }
+
+        /*end accordian js */
         $(document).ready(function () {
             $.ajaxSetup({
                 headers: {
